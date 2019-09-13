@@ -1,0 +1,48 @@
+html {
+	font-family: 'Open Sans', sans-serif;
+}
+
+header{
+	background-color: #E8E8E8;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 1%;
+}
+
+main{
+	text-align: center;
+	font-weight: bold;
+}
+
+button{
+	background-color: #FFFFFF;
+	color:#8A2BE2;
+	border-radius: 5px;
+	padding: 7px;
+	border-style: solid;
+	border-color: #8A2BE2;
+}
+
+#add{
+	background-color: #8A2BE2;
+	color: #FFFFFF;
+	border-radius: 5px;
+	padding: 7px;
+	border-style: solid;
+	border-color: #8A2BE2;
+
+}
+input{
+	width: 77%;
+	padding-top:2%;
+	padding-bottom: 1%;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #E8E8E8;
+}
+
+hr{
+	border-color: #E8E8E8;
+	border-style: solid;
+	width: 100%;
+}
