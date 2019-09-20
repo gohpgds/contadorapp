@@ -1,3 +1,14 @@
+<?php
+	require ('funcoes.php');
+
+	 
+	if ($_POST['acao'] == "add")
+	{
+	criarContador  ($_POST ['cont']);	
+	}
+
+	$Contadores = buscarContadores();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,38 +24,32 @@
 	</header>
 	<div id="container">
 		<main>
-			<form action="contarcoisas.php" method="post">
-			<p><button>⊖</button> 
-					<p> xixi </p> 
-					<p>2</p>
-			<button>⊕</button>
-			</p>
+		<?php foreach ($Contadores as $c): ?>			
+		
+		
+			<form class="contador" action="index.php" method="post" class="contador">
+				<button name="acao" value="menos" >⊖</button> 
+				<div> 
+					<p><?= $c['Nome'] ?></p>
+					<p><?= $c['Numero'] ?></p>
+				</div>
+				<button name="acao" value="mais">⊕</button>
+			</form>
 
-			<p>
-			<button>⊖</button> 
-					<p> Copos D'água </p>
-					<p>4</p>
-			<button>⊕</button>
-			</p>
-
-			<p>
-			<button>⊖</button> 
-					<p> Biscoitos </p> 
-					<p>7</p>
-			<button>⊕</button>
-			</p>
-
+		<?php endforeach; ?>	
 
 		</main>
 		<hr>
 		<footer>
+			<form action="index.php" method="post">
 			<p>
          <label for="icont">Novo contador</label> </p>
 
          <p><input type="nome" id="icont" name="cont">
-         <button id="add" type="submit">Adicionar</button></p>
-    	 
+         <button id="add" type="submit" name="acao" value="add">Adicionar</button></p>
+    	 </form>
 		</footer>
+
 	</div>
 </body>
 </html>

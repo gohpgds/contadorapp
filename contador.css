@@ -12,6 +12,10 @@ header{
 main{
 	text-align: center;
 	font-weight: bold;
+	width: 77%;
+	margin-right: auto;
+	margin-left: auto;
+
 }
 
 button{
@@ -45,4 +49,8 @@ hr{
 	border-color: #E8E8E8;
 	border-style: solid;
 	width: 100%;
+}
+.contador{
+	display: flex;
+	justify-content: space-between;
 }
