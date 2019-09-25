@@ -1,11 +1,17 @@
-create database  if not exists Contadores ;
-use Contadores; 
+create database  if not exists  Contador;
+use Contador; 
 CREATE TABLE if not exists contador
 (
-Nome varchar(15) NOT NUll,
-Numero char (15) NOT NUll,
-Codigo int  (15) NOT NUll,
-primary key (Codigo)
+codigo int (11) NOT NUll auto_increment,
+nome varchar(100),
+numero int (20),
+primary key (codigo)
 );
+
+select * from contador;
+
+create user 'contador'@'localhost' identified by 'senha123';
+
+grant all privileges on Contador.* TO 'contador'@'localhost';
 
 

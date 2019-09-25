@@ -3,7 +3,7 @@
 
 function criarConexao()
 {
-	$banco = "Contadores";
+	$banco = "Contador";
 	$usuario = "contador";
 	$senha = "senha123";
 	$conexao = new PDO("mysql:host=localhost;dbname=${banco}",
@@ -22,7 +22,7 @@ function buscarContadores()
 function criarContador($nome)
 {
 	$conexao = criarConexao();
-	$sql = "INSERT INTO contador values (?, 0,  null)";
+	$sql = "INSERT INTO contador values (null, ? , 0)";
 	$comando = $conexao->prepare($sql);
 	return $comando->execute(
 		[
@@ -36,12 +36,38 @@ function criarContador($nome)
 
 function incrementarContador($id)
 {
-
+	$conexao = criarConexao();
+	$sql = "UPDATE contador SET numero= numero+1 WHERE codigo=?";
+	$comando = $conexao->prepare($sql);
+	return $comando->execute(
+		[
+			$id
+		]
+	);
 }
 
 function decrementarContador($id)
 {
+	$conexao = criarConexao();
+	$sql = "UPDATE contador SET numero= numero-1 WHERE codigo=?";
+	$comando = $conexao->prepare($sql);
+	return $comando->execute(
+		[
+			$id
+		]
+	);
+}
 
+function deletarcont($id)
+{
+	$conexao = criarConexao();
+	$sql = "DELETE contador WHERE codigo=?";
+	$comando = $conexao->prepare($sql);
+	return $comando->execute(
+		[
+			$id
+		]
+	);
 }
 
 ?>

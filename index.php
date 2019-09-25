@@ -1,10 +1,31 @@
 <?php
 	require ('funcoes.php');
 
-	 
-	if ($_POST['acao'] == "add")
+	if (!empty ($_POST['acao']))
 	{
-	criarContador  ($_POST ['cont']);	
+	
+		if ($_POST['acao'] == 'add')
+		{
+			criarContador  ($_POST ['cont']);	
+		} 
+
+		else if ($_POST['acao'] == 'mais')
+		{
+			 incrementarContador($_POST ['codigo']);	
+		} 
+
+		else if ($_POST['acao'] == 'menos')
+		{
+			 decrementarContador($_POST ['codigo']);	
+		} 
+
+		else if ($_POST['acao'] == 'lixo')
+		{
+			 deletarcont($_POST ['codigo']);	
+		} 
+
+
+		
 	}
 
 	$Contadores = buscarContadores();
@@ -30,10 +51,12 @@
 			<form class="contador" action="index.php" method="post" class="contador">
 				<button name="acao" value="menos" >⊖</button> 
 				<div> 
-					<p><?= $c['Nome'] ?></p>
-					<p><?= $c['Numero'] ?></p>
+					<p><?= $c['nome'] ?></p>
+					<p><?= $c['numero'] ?></p>
+					<button name="acao" value="lixo"><img src="imagem/lixo.jpg"></button>
 				</div>
 				<button name="acao" value="mais">⊕</button>
+				<input type="hidden" name="codigo" value="<?= $c['codigo'] ?>">
 			</form>
 
 		<?php endforeach; ?>	
@@ -42,12 +65,12 @@
 		<hr>
 		<footer>
 			<form action="index.php" method="post">
-			<p>
-         <label for="icont">Novo contador</label> </p>
+				<p>
+	         	<label for="icont">Novo contador</label> </p>
 
-         <p><input type="nome" id="icont" name="cont">
-         <button id="add" type="submit" name="acao" value="add">Adicionar</button></p>
-    	 </form>
+	         	<p><input type="text" id="icont" name="cont">
+	         	<button id="add" type="submit" name="acao" value="add">Adicionar</button></p>
+    	 	</form>
 		</footer>
 
 	</div>
